@@ -1,0 +1,19 @@
+tate_reg (
+      .clk     (clk),
+      .reset   (reset),
+      .d      	(n),
+      .q       (p)
+   );
+   
+   fsm3_comb_logic comb_logic(
+		.a			(a),
+		.b			(b),
+		.p			(p),
+		.n			(n),
+		.s			(s),
+		.t 		(t),
+		.u			(u)
+   );
+   
+endmodule
+

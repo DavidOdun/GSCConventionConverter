@@ -17,25 +17,23 @@ void camelcase(FILE *stream)
 	while (fgets(buffer, BUFSIZ, stream))
 	{
 		int LOW = strlen(buffer);
-		int holder = LOW;
 		for (int i = 0; i < strlen(buffer); i++){
 			
 			if (buffer[i] == '_'){
 				for (int j = i; j < LOW; j++)
 				{
 					buffer[j] = buffer[j+1];
-					holder--;
 				}
+				buffer[i] = toupper(buffer[i]);
 			}
 		}
-		buffer[holder] = toupper(buffer[holder]);
 		fputs(buffer, stdout);
 	}
 }
 
 void camelFile(const char *path)
 {
-	FILE *fs = fopen(path, "w");
+	FILE *fs = fopen(path, "r+");
 	if (fs == NULL)
 	{
 		fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME);
@@ -62,10 +60,9 @@ int argind = 1;
 		  		usage(0);
 		  	break;
 			case 'c':	// I was everything here to be camelcase
-				puts("here1");
 				camelFile(arg);
 				break;
-			case 'u':	// everything to become underscore*/
+			case 'u':	// everything to become underscore
 			default:
 		  		usage(1);
 		  	break;
@@ -80,7 +77,6 @@ int argind = 1;
 		while (argind < argc){
 			char *path = argv[argind++];
 			if (strcmp(path, "-") == 0){
-				puts("here2");
 				camelcase(stdin);
 			}
 			else{
