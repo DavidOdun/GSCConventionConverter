@@ -15,6 +15,7 @@ void camelcase(FILE *stream)
 {
 	char buffer [BUFSIZ];
 	size_t i = 0;
+	//My name is
 	while (fgets(buffer, BUFSIZ, stream))
 	{
 		if (buffer[i] == '_')
