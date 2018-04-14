@@ -14,13 +14,21 @@ void usage(int status){
 void camelcase(FILE *stream)
 {
 	char buffer [BUFSIZ];
-	size_t i = 0;
-	//My name is
 	while (fgets(buffer, BUFSIZ, stream))
 	{
-		if (buffer[i] == '_')
-			buffer[i] = toupper(buffer[i-1]);
-		i++;
+		int LOW = strlen(buffer);
+		int holder = LOW;
+		for (int i = 0; i < strlen(buffer); i++){
+			
+			if (buffer[i] == '_'){
+				for (int j = i; j < LOW; j++)
+				{
+					buffer[j] = buffer[j+1];
+					holder--;
+				}
+			}
+		}
+		buffer[holder] = toupper(buffer[holder]);
 		fputs(buffer, stdout);
 	}
 }
