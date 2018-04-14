@@ -24,6 +24,17 @@ int main(int argc, char* argv[]) {
             case 'h':
                 usage(0);
                 break;
+			case 'c':
+				//Call the CamelCase
+				while(i<arc)
+				{
+					camelCase(argv[i]);
+				}
+				//Says I want every file here to become camelCase;
+				break;
+			case 'u':
+				// Say I want a file with underscore
+				break;
             default:
                 usage(1);
                 break;
