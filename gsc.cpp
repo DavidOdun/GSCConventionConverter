@@ -11,6 +11,7 @@ void usage(int status){
 	exit(status);
 }
 
+// Incomplete 
 void camelcase(FILE *stream)
 {
 	char buffer [BUFSIZ];
