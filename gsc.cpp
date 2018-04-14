@@ -11,6 +11,40 @@ void usage(int status){
     exit(status);
 }
 
+void camelCaseToUnderscore(char* s){
+    int numCaps = 0;
+    char final[BUFSIZ];
+    int totalLength = 0;
+
+    printf("string length: %d\n", strlen(s));
+
+    // Loop through the string to find the 
+    // number of upper-case letters in the string
+    for(int i = 0; i < strlen(s); i++){
+        if(isupper(s[i])){
+            numCaps++;
+        }
+    }
+
+    totalLength = strlen(s) + numCaps;
+
+    // Initialize array to hold the indices of
+    // of the upper-case letters
+    int indexOfCaps[numCaps];
+
+    for(int i = 0; i < strlen(s); i++){
+        if(isupper(s[i])){
+            char temp = final[i];
+            final[i] = '_';
+            final[i+1] = tolower(temp);
+        } else {
+            final[i] = s[i];
+        }
+    }
+
+    puts(final);
+}
+
 /* Main Execution */
 int main(int argc, char* argv[]) {
     
